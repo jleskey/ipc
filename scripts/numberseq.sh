@@ -16,11 +16,11 @@ if [ ! -f numbers ]; then echo 0 >numbers; fi
 count=0
 while ((count != 200))
 do
-    if ln numbers numbers.lock; then    # set lock
+    if ln numbers numbers.lock 2>/dev/null; then
         ((count = count + 1))
-        n=`tail -1 numbers`             # retrieve last line of file
+        n=`tail -1 numbers`     # retrieve last line of file
         ((n = n + 1))
-        echo $n >>numbers;              # append n at end of file
-        rm numbers.lock                 # remove lock
+        echo $n >>numbers       # append n at end of file
+        rm numbers.lock
     fi
 done
