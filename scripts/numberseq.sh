@@ -7,6 +7,9 @@
 # Arithmetic expressions may be placed inside double parentheses to use
 # a more familiar and flexible syntax than in the simple sh shell.
 
+# ensure consistent working directory
+cd $(dirname "$0")/..
+
 # if numbers file does not exist, create it and write 0
 if [ ! -f numbers ]; then echo 0 >numbers; fi
 
