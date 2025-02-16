@@ -16,6 +16,9 @@ if [ ! -f numbers ]; then echo 0 >numbers; fi
 count=0
 while ((count != 200))
 do
+    # We could theoretically include the count in the critical region,
+    # but the instructions indicate that it should be focused on file
+    # access, so focused on file access it will be.
     ((count = count + 1))
     if ln numbers numbers.lock 2>/dev/null; then
         n=`tail -1 numbers`     # retrieve last line of file
