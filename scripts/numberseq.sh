@@ -16,8 +16,8 @@ if [ ! -f numbers ]; then echo 0 >numbers; fi
 count=0
 while ((count != 200))
 do
+    ((count = count + 1))
     if ln numbers numbers.lock 2>/dev/null; then
-        ((count = count + 1))
         n=`tail -1 numbers`     # retrieve last line of file
         ((n = n + 1))
         echo $n >>numbers       # append n at end of file
